@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style media="screen">
+      :root{
+        --accent-color: #1A237E;
+        --content-bg-color: white;
+        --bg-color: #f6f5f4;
+        --header-bg-color: white;
+        --text-color: black;
+      }
+
+      body {
+          font-family: "Noto Sans", "Liberation Sans","Trebuchet MS", Arial, Helvetica, sans-serif;
+          margin: 0;
+          background-color: var(--bg-color);
+          color: var(--text-color);
+        }
+
+      .alt{
+        display: flex;
+      }
+
+      p{
+        margin: 20px;
+      }
+    </style>
+    <title>Lån</title>
+  </head>
+  <body>
+    <h1>Velkommen til Goggen bank </h1>
+
+    <div class="alt">
+
+      <p id="tekstsoyle1">| Ditt valgte år |<br></p>
+      <p id="soyle1"></p>
+
+      <p id="tekstsoyle2">| Ditt år gange 2 |<br></p>
+      <p id="soyle2"></p>
+
+      <p id="tekstsoyle3">| Tilfedig år(mellom 0-60)|<br></p>
+      <p id="soyle3"></p>
+
+      <img id="bilde1" src="penge1.jpg" height="200px" width="500px">
+          </div>
+
+      <script type="text/javascript">
+      //passet ikkke inn noen stedmed alert(""); og prompt med tekst kan lage vist nødvendig
+        var tekstsoyle1 = document.getElementById("tekstsoyle1");
+        var tekstsoyle2 = document.getElementById("tekstsoyle2");
+        var soyle1 = document.getElementById("soyle1");
+        var soyle2 = document.getElementById("soyle2");
+        var bilde1 = document.getElementById("bilde1");
+
+        var tall1 = Math.floor(Math.random()*3 + 1);
+        bilde1.src = "penge" + tall1 + ".jpg";
+
+
+        var penger = Number(prompt("Hvor mye penger skal du låne"));
+        var aar = Number(prompt("Hvor lenge skal lånet vare(år helst mellom 0-60)"));
+
+            if (isNaN(penger) || isNaN(aar)) {
+              alert("Skriv et tall")
+            }else {
+              if (penger > 0 && aar > 0) {
+                soyle1.style.backgroundColor = "blue";
+                soyle1.style.height = aar*10 +"px";
+                soyle1.style.width = "50px";
+                soyle1.style.border = "solid black";
+                tekstsoyle1.innerHTML += penger + "kr";
+                tekstsoyle1.innerHTML += "<br>" + aar +"år<br>";
+
+                // Matte
+                var rente = Number(prompt("Skriv inn rente"));
+                var z = (rente/100)+1;
+                var y = 1/z;
+                var pow = Math.pow(y, aar);
+                var x = (pow-1)/(y-1);
+                var aarpenger = penger / x * z;
+                var total = aarpenger*aar;
+                var mer = total-penger;
+
+                  tekstsoyle1.innerHTML += "<br>" + aarpenger.toFixed(0) + "kr<br>årlig-innbetaling<br>";
+                  tekstsoyle1.innerHTML += "<br>" + total.toFixed(0) + "kr <br> total-betalt<br>";
+                  tekstsoyle1.innerHTML += "<br>" + mer.toFixed(0) + "kr <br> betalt mer<br>";
+
+                soyle2.style.backgroundColor = "green";
+                soyle2.style.height = aar*10*2 +"px";
+                soyle2.style.width = "50px";
+                soyle2.style.border = "solid black";
+                tekstsoyle2.innerHTML += penger + "kr";
+                tekstsoyle2.innerHTML += "<br>" + aar*2 +"år<br>"
+
+                var z = (rente/100)+1;
+                var y = 1/z;
+                var pow = Math.pow(y, aar*2);
+                var x = (pow-1)/(y-1);
+                var aarpenger = penger / x * z;
+                var total = aarpenger*aar*2;
+                var mer = total-penger;
+
+                  tekstsoyle2.innerHTML += "<br>" + aarpenger.toFixed(0) + "kr<br>årlig-innbetaling<br>";
+                  tekstsoyle2.innerHTML += "<br>" + total.toFixed(0) + "kr <br> total-betalt<br>";
+                  tekstsoyle2.innerHTML += "<br>" + mer.toFixed(0) + "kr <br> betalt mer<br>";
+
+                var randomaar = Math.floor(Math.random()*60+1);
+                var tekstsoyle3 = document.getElementById("tekstsoyle3");
+                var soyle3 = document.getElementById("soyle3");
+
+                soyle3.style.backgroundColor = "red";
+                soyle3.style.height = randomaar*10 +"px";
+                soyle3.style.width = "50px";
+                soyle3.style.border = "solid black";
+                tekstsoyle3.innerHTML += penger + "kr";
+                tekstsoyle3.innerHTML += "<br>" + randomaar +"år<br>";
+
+                var z = (rente/100)+1;
+                var y = 1/z;
+                var pow = Math.pow(y, randomaar);
+                var x = (pow-1)/(y-1);
+                var aarpenger = penger / x * z;
+                var total = aarpenger*randomaar;
+                var mer = total-penger;
+
+                  tekstsoyle3.innerHTML += "<br>" + aarpenger.toFixed(0) + "kr<br>årlig-innbetaling<br>";
+                  tekstsoyle3.innerHTML += "<br>" + total.toFixed(0) + "kr <br> total-betalt<br>";
+                  tekstsoyle3.innerHTML += "<br>" + mer.toFixed(0) + "kr <br> betalt mer<br>";
+
+
+
+              }else {
+                alert("skriv et positivt tall");
+              }
+            }
+
+
+      </script>
+  </body>
+</html>
