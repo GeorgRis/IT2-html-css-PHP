@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fuglequiz</title>
+    <style>
+      body{
+            margin-left: 10%;
+            margin-top: 10px;
+            font-family: sans-serif;
+        }
+        @keyframes sort{
+            0%{left: -150px;}
+            100%{left: 600px;}
+        }
+        @keyframes hvit{
+            0%{left: 1000px;}
+            100%{left: -150px;}
+        }
+        #hvit_fjar{
+          position: absolute;
+          left: 1000px;
+          top: 500px;
+
+        }
+        #sort_fjar{
+          position: absolute;
+          left: -150px;
+          top: 700px;
+        }
+    </style>
+  </head>
+  <body>
+    <h2> Velkommen til Fuglequiz</h2>
+    <img id="foto" src="" height="450">
+    <p id="tekst"></p>
+    <p> Gjett hvilken fugl dette er <input type="text" id="gjett"></p>
+    <p> Enten "blameis","dompap","flaggspett","graspurv","gulspurv","kjottmeis", "pilfink","svartmeis"</p>
+    <button id="btnNeste">Klikk for å gjette og se neste bilde</button>
+    <div id="animasjon">
+    <button id="avslutt">Klikk her for å avslutte quizen</button>
+
+    <p id="tekstsoyle1">
+    <p id="soyle1"></p>
+    <p id="tekstsoyle2">
+    <p id="soyle2"></p>
+
+    <img src="hvit_fjar.jpg" id="hvit_fjar">
+    <img src="sort_fjar.jpg" id="sort_fjar">
+    </div>
+
+    <script type="text/javascript">
+      var tekst = document.getElementById("tekst");
+      var foto = document.getElementById("foto");
+      var btnNeste = document.getElementById("btnNeste");
+      var avslutt = document.getElementById("avslutt");
+      var gjett = document.getElementById("gjett");
+      var svar = gjett.value;
+      var forrige = 0;
+      var riktig = 0;
+      var feil = 0;
+
+      var tekstsoyle1 = document.getElementById("tekstsoyle1");
+      var tekstsoyle2 = document.getElementById("tekstsoyle2");
+      var soyle1 = document.getElementById("soyle1");
+      var soyle2 = document.getElementById("soyle2");
+
+      var animasjon = document.getElementById("animasjon");
+      var hvit = document.getElementById("hvit_fjar");
+      var sort = document.getElementById("sort_fjar");
+
+
+      var fugler = ["blameis","dompap","flaggspett","graspurv","gulspurv","kjottmeis", "pilfink","svartmeis"];
+      var bilde = ["blameis.jpg","dompap.jpg","flaggspett.jpg","graspurv.jpg","gulspurv.jpg","kjottmeis.jpg", "pilfink.jpg","svartmeis.jpg"];
+
+      window.onload = function(){
+        var indeks = Math.floor(Math.random()*8);
+        while(forrige == indeks){
+            var indeks = Math.floor(Math.random()*8);
+        }
+
+        foto.src = bilde[indeks];
+
+        forrige = indeks;
+      }
+
+
+      btnNeste.onclick = function(){
+        nesteBilde();
+        }
+      function nesteBilde(){
+        var indeks = Math.floor(Math.random()*8);
+        while(forrige == indeks){
+            var indeks = Math.floor(Math.random()*8);
+        }
+
+        foto.src = bilde[indeks];
+
+        forrige = indeks;
+
+
+      if (svar.match(fugler[indeks])) { // For ikke helt til med å gjette riktig men alt annet funker perfekt, Prøve både med prompt og input, men må være noe med match og sånn.
+        riktig ++;
+        alert("Du gjettet riktig");
+      } else {
+        feil ++;
+        alert("Du gjettet feil");
+      }
+    }
+    avslutt.onclick = function(){
+      soyle1.style.backgroundColor = "green";
+      soyle1.style.width = riktig*25 +"px";
+      soyle1.style.height = "50px";
+      soyle1.style.border = "solid black";
+      tekstsoyle1.innerHTML = "Du fikk " + riktig + " riktig i quizen";
+
+                soyle2.style.backgroundColor = "red";
+                soyle2.style.width = feil*25 +"px";
+                soyle2.style.height = "50px";
+                soyle2.style.border = "solid black";
+                tekstsoyle2.innerHTML = "Du fikk " + feil + " feil i quizen";
+    }
+    animasjon.onclick = function(){
+        hvit.style.animation = "hvit 1s forwards linear";
+        sort.style.animation = "sort 1s forwards linear";
+    }
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1></h1>
+    Vil du har Dressing? <br>
+    Rømme: <input type="checkbox" id="cbRomme" value="0"> <br>
+    Hvitløk: <input type="checkbox" id="cbHvit" value="1">
+
+    <p id="tekst"></p>
+
+    <script type="text/javascript">
+      var tekst = document.getElementById("tekst");
+      var cbRomme = document.getElementById("cbRomme");
+      var cbHvit = document.getElementById("cbHvit");
+      var totPris = 0;
+      var pris = [30, 25];
+
+      cbRomme.onchange = function(){
+        if(cbRomme.checked){
+          totPris = totPris + pris[cbRomme.value];
+        }else {
+          totPris = totPris - pris[cbRomme.value];
+        }
+        tekst.innerHTML = "<br>Pris: " + totPris;
+      }
+      cbHvit.onchange = function(){
+        if(cbHvit.checked){
+          totPris = totPris + pris[cbHvit.value];
+        }else {
+          totPris = totPris - pris[cbHvit.value];
+        }
+        tekst.innerHTML = "<br>Pris: " + totPris;
+      }
+
+    </script>
+
+  </body>
+</html>

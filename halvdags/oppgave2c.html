@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <style media="screen">
+      body{
+          margin-left: 10%;
+          margin-top: 100px;
+          font-family: sans-serif;
+          font-weight: 100;
+      }
+    </style>
+    <title>Høstbilder</title>
+  </head>
+  <body>
+    <h1>Høstmåneder</h1>
+    <p id="tekst"></p>
+    <img id="bilde" src="" width="500px" height="300px">
+
+    <script type="text/javascript">
+      var tekst = document.getElementById("tekst");
+      var bilde = document.getElementById("bilde");
+
+      var maaned = ["September","Oktober","November"];
+      var bilder = ["bilder-halvdags/blar.jpg","bilder-halvdags/skog.jpg","bilder-halvdags/vann.jpg"]
+
+      for (var i = 0; i < maaned.length; i++) {
+        tekst.innerHTML += "<br>"+ maaned[i];
+      }
+
+      var valg = Number (prompt("tast inn nummer 1,2 eller 3"));
+      if (isNaN(valg) || valg <1 || valg >3){
+          alert("skriv 1,2 eller 3");
+
+      }else{
+        tekst.innerHTML += "<br><br> Bilde " + valg + " passer kansje til " + maaned[valg-1];
+        bilde.src = bilder[valg-1];
+      }
+
+
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>Arealer</h1>
+    <p id="tekst"></p>
+    <p id="figur"></p>
+
+    <script type="text/javascript">
+      var tekst = document.getElementById("tekst");
+      var figur = document.getElementById("figur");
+
+      var lengde = prompt("Lengde");
+      var bredde = prompt("Bredde");
+
+      if (isNaN(lengde) || isNaN(bredde)){
+        alert("skriv et tall")
+      } else {
+
+                    if(lengde > 0 && bredde > 0){
+                      if (lengde == bredde){
+                        tekst.innerHTML = "KVADRAT";
+                        tekst.innerHTML += "<br>" + lengde*bredde;
+                        figur.style.backgroundColor = "green";
+                        figur.style.width = lengde + "px";
+                        figur.style.height = bredde + "px";
+                      } else {
+                        tekst.innerHTML = "REKTANGEL";
+                        tekst.innerHTML += "<br>" + lengde*bredde;
+                        figur.style.backgroundColor = "blue";
+                        figur.style.width = bredde + "px";
+                        figur.style.height = lengde + "px";
+                      }
+                    } else{alert("skriv positive tall")}
+    }
+
+
+
+    // spør om klokka er >=10 && Kklokka <=18,
+    //kom fremm bilde og spør om penge
+    //hvis penge større 500 rabatt else ikke
+
+    </script>
+  </body>
+</html>

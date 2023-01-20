@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+      <style>
+        body{
+              margin-left: 10%;
+              margin-top: 100px;
+              font-family: sans-serif;
+              font-weight: 100;
+          }
+      </style>
+    <title>Husly</title>
+  </head>
+  <body>
+    <h1>HUSLY Borettslag</h1>
+      <p>Hei alle beboere av huslt borettslag. Vi kan nå legge til en fast strømmetjeneste inn i vårt internett-tilbud </p>
+      <p>Du får redusert priser dersom du velger en av disse strømmetjenestene:</p>
+      <img src="bilder-halvdags/netflix.png" alt=""> <img src="bilder-halvdags/hbo.png" alt=""> <img src="bilder-halvdags/disney.png" alt="">
+      <p> Priser: netflix og HBO er 98 kr/mnd. Disney+ er 69 kr/mnd</p>
+      <p><br>Ditt valg:</p>
+
+    <p id="tekst"></p>
+
+    <script type="text/javascript">
+      var tekst = document.getElementById("tekst");
+
+
+      var valg  = prompt("Tast inn strømmetjenesten du vil velge(Enten H, N eller D)");
+      if (valg.match("H") || valg.match("h")) {
+        var sum = 98+2580;
+        tekst.innerHTML += "<br> HBO max: 98kr/mnd <br> Husleie: 2580kr/mnd <br> Din totale husleie/mnd blir "+ sum + "kr" ;
+      } else if (valg.match("N") || valg.match("n")) {
+        var sum = 98+2580;
+        tekst.innerHTML += "<br> Netflix: 98kr/mnd <br> Husleie: 2580kr/mnd <br> Din totale husleie/mnd blir "+ sum + "kr" ;
+      } else if (valg.match("D") || valg.match("d")) {
+        var sum = 69+2580;
+        var yes = prompt("Ønsker du å legge til HBO max til redusert pris 68kr/mnd?");
+          if (yes.match("Ja") || yes.match("ja")) {
+            var sum = 69+2580+69;
+            tekst.innerHTML += "<br> Du takket JA til tilbudet om HBO max som ekstra tjeneste";
+            tekst.innerHTML += "<br> Disney: 69kr/mnd + HBO max: 69kr/mnd<br> Husleie: 2580kr/mnd <br> Din totale husleie/mnd blir "+ sum + "kr" ;
+          } else if (yes.match("Nei") || yes.match("nei")) {
+            tekst.innerHTML += "<br> Du takket NEI til tilbudet om HBO max som ekstra tjeneste";
+            tekst.innerHTML += "<br> Disney: 98kr/mnd <br> Husleie: 2580kr/mnd <br> Din totale husleie/mnd blir "+ sum + "kr" ;
+          }else {
+              alert("Skriv Ja eller Nei");
+                }
+      } else {
+        alert("skriv inn H,N eller D");
+      }
+    </script>
+  </body>
+</html>

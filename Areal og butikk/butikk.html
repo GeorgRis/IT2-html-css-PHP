@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h1>BUTIKK</h1>
+    <p>(Sjekker om butikken er åpen og om du får rabbat.)</p>
+    <p id="tekst"></p>
+    <p id="rabatt"><img id="bilde" src=""></p>
+
+    <script type="text/javascript">
+      var tekst = document.getElementById("tekst");
+      var rabatt = document.getElementById("rabatt");
+      var bilde = document.getElementById("bilde");
+
+      var klokka = prompt("Hva er klokka du skal på butikken");
+
+      if (isNaN(klokka)){
+        alert("skriv et tall");
+      } else {
+
+        if (klokka >=10 && klokka <=18) {
+          var penger = prompt("skriv hvor mye du skal handle for");
+          tekst.innerHTML = "Butikken er åpen";
+          bilde.src = "kawi/kawi.gif"; // skjønner ikke helt åffer bildene ikke virker
+
+            if (penger >=500) {
+              rabatt.innerHTML += "Du for 10% rabatt på ditt handlebeløp " + penger + "kr idag";
+              rabatt.style.color = "red";
+              rabatt.style.fontSize = "30px";
+            } else {
+              rabatt.innerHTML += "Ingen rabatt på dette beløpet idag (Rabattgrense 500kr)";
+              rabatt.style.color = "blue";
+              rabatt.style.fontSize = "25px";
+            }
+
+        } else {
+          tekst.innerHTML = "Beklager, butikken er stengt. Sjekk i stedet ut vår nettbutikk";
+          bilde.src = "kawi/kawi-nett.gif"; // skjønner ikke helt åffer bildene ikke virker
+        }
+
+      }
+    </script>
+
+  </body>
+</html>

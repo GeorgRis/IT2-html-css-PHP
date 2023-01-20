@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <h2>nedtrekklister</h2>
+    <select id="lstBillet">
+      <option>Velg billett</option>
+      <option>Månedsbillet</option>
+      <option>Ukesbillet</option>
+      <option>Dagspass</option>
+    </select>
+    <input id="inpAnt" type="number" min="1" value="1">
+    <button id="btnVis">Bekreft</button>
+
+    <p id="tekst"></p>
+
+    <script type="text/javascript">
+      var tekst = document.getElementById("tekst");
+      var lstBillet = document.getElementById("lstBillet");
+      var inpAnt = document.getElementById("inpAnt");
+      var btnVis = document.getElementById("btnVis");
+
+      var pris = [5000,1500,800];
+      var indeks = 0; //oppretter ein global variabel
+
+      lstBillet.onchange = function(){
+        tekst.innerHTML = lstBillet.value;
+        indeks = lstBillet.selectedIndex -1;
+        tekst.innerHTML += "<br>Pris " +pris[indeks];
+      }
+      btnVis.onclick = function(){
+        var antall = inpAnt.value;
+        var totPris = antall*pris[indeks];
+        tekst.innerHTML = lstBillet.value;
+        tekst.innerHTML += "<br>Pris " +pris[indeks];
+        tekst.innerHTML += "<br> Prisen for "+ antall + " billetter: " + totPris;
+      }
+
+    </script>
+  </body>
+</html>

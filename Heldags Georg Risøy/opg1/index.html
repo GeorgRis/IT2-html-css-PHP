@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="no" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Fugler</title>
+    <style>
+        body{
+            margin-left: 10%;
+            margin-top: 10px;
+            font-family: sans-serif;
+        }
+    </style>
+  </head>
+  <body>
+    <h2>Info om fugler</h2>
+      <p>Fornavn: <input id="idFornavn" type="text"> </p>
+      <p><br> Alder: <input id="idAlder" type="number" min="0"><br></p>
+      <p><br> Velg fugl:
+     <select id=fuglevalg>
+       <option>blåmeis</option>
+        <option>dompap</option>
+         <option>flaggspett</option>
+          <option>graspurv</option>
+           <option>gulspurv</option>
+            <option>kjottmeis</option>
+             <option>pilfink</option>
+              <option>svartmeis</option>
+     </select></p>
+
+      <button id="btnRegistrer">Sjekk ut fugler!</button>
+        <br>
+          <img id="foto" src="" height="450">
+        <br>
+         <audio id="lyd"></audio>
+          <p id="info"></p>
+        <button id="hilsning">Hade!</button>
+
+
+    <script type="text/javascript">
+      var fornavn = document.getElementById("idFornavn");
+      var alder = document.getElementById("idAlder");
+      var info = document.getElementById("info");
+      var fuglevalg = document.getElementById("fuglevalg");
+      var foto = document.getElementById("foto");
+      var lyd = document.getElementById("lyd");
+      var btnRegistrer = document.getElementById("btnRegistrer");
+      var hilsning = document.getElementById("hilsning");
+
+      var fugler = ["blameis","dompap","flaggspett","graspurv","gulspurv","kjottmeis", "pilfink","svartmeis"];
+
+      var bilde = ["blameis.jpg","dompap.jpg","flaggspett.jpg","graspurv.jpg","gulspurv.jpg","kjottmeis.jpg", "pilfink.jpg","svartmeis.jpg"];
+      var dyrelyd = ["blameis.mp3","dompap.mp3","flaggspett.mp3","graspurv.mp3","gulspurv.mp3","kjottmeis.mp3","pilfink.mp3","svartmeis.mp3"];
+
+      var indeks = 0;
+
+      btnRegistrer.onclick = function(){
+        info.innerHTML = fuglevalg.value;
+        indeks = fuglevalg.selectedIndex;
+        foto.src = bilde[indeks];
+        lyd.src = dyrelyd[indeks];
+        lyd.play();
+
+//Fikk ikke til å legge til arrays med hele infoen? Men ville gjort det sånn her. Prøvde å skrive det hele inni en array med navn infoU10 og o10 men blefor langt for array?
+        if (alder.value<10) {
+          info.innerHTML += infoU10[indeks];
+        } else {
+          info.innerHTML += infoO10[indeks];
+        }
+      }
+
+      hilsning.onclick = function(){
+        alert("God sommer" + " " + fornavn.value);
+      }
+
+    </script>
+
+
+  </body>
+</html>
